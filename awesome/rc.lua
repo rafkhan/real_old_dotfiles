@@ -10,6 +10,8 @@ require("naughty")
 -- Load Debian menu entries
 require("debian.menu")
 
+vicious = require("vicious");
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -40,7 +42,7 @@ end
 beautiful.init("/home/rafy/.config/awesome/themes/fence/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -168,18 +170,76 @@ for s = 1, screen.count() do
                                               return awful.widget.tasklist.label.currenttags(c, s)
                                           end, mytasklist.buttons)
 
+    separator = widget({type = "textbox" })
+    separator.text = " :: "
+
+    cpuwidget = widget({ type = "textbox" })
+    vicious.register(cpuwidget, vicious.widgets.cpu, "$1%")
+
+    memwidget = widget({ type = "textbox" })
+    vicious.register(memwidget, vicious.widgets.mem, "$2MB/$3MB", 5)
+
+    netwidget = widget({ type = "textbox" })
+    vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlan0 down_kb}</span> <span color="#7F9F7F">${wlan0 up_kb}</span>', 3)
+
+    icon_netup = widget({ type="imagebox" })
+    icon_netup.image = image(beautiful.icon_netup)
+    icon_netdn = widget({ type="imagebox" })
+    icon_netdn.image = image(beautiful.icon_netdn)
+
+    icon_ram = widget({ type="imagebox" })
+    icon_ram.image = image(beautiful.icon_ram)
+  
+mpdwidget = widget({ type = "textbox" })
+vicious.register(mpdwidget, vicious.widgets.mpd,
+    function (widget, args)
+        if args["{state}"] == "Stop" then 
+            return " - "
+        else 
+            return args["{Artist}"]..' - '.. args["{Title}"]
+        end
+    end, 10)
+
+    icon_mpd = widget({ type="imagebox" })
+    icon_mpd.image = image(beautiful.icon_mpd)
+
+    icon_cpu = widget({ type="imagebox"  })
+    icon_cpu.image = image(beautiful.icon_cpu)
+
+    batwidget = widget({ type="textbox" }) 
+    vicious.register(batwidget, vicious.widgets.bat, '$1$2%', 10, 'BAT0')
+    icon_bat= widget({ type="imagebox"  })
+    icon_bat.image = image(beautiful.icon_bat)
+
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
-            mylauncher,
+            --mylauncher,
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
         mytextclock,
+        separator,
+        cpuwidget,
+        icon_cpu,
+        separator,
+        memwidget,
+        icon_ram,
+        separator,
+        batwidget,
+        icon_bat,
+        separator,
+        icon_netup,
+        netwidget,
+        icon_netdn,
+        separator,
+        mpdwidget,
+        icon_mpd,
+
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft

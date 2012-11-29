@@ -55,7 +55,7 @@ theme.fg_focus      = "#d6d9ba"
 theme.fg_urgent     = "#2c2c2c"
 theme.fg_minimize   = "#2c2c2c"
 
-theme.border_width  = "0"
+theme.border_width  = "1"
 theme.border_normal = "#000000"
 theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
@@ -127,6 +127,14 @@ theme.layout_spiral  = themedir .. "/layouts/spiralw.png"
 theme.layout_dwindle = themedir .. "/layouts/dwindlew.png"
 
 theme.awesome_icon = themedir .. "/logo20.png"
+
+icons = "/home/rafy/.config/awesome/themes/icons/zenburn/"
+theme.icon_ram = icons .. "mem.png"
+theme.icon_cpu = icons .. "cpu.png"
+theme.icon_netup = icons .. "up.png"
+theme.icon_netdn = icons .. "down.png"
+theme.icon_mpd = icons .. "music.png"
+theme.icon_bat = icons .. "bat.png"
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:encoding=utf-8:textwidth=80
