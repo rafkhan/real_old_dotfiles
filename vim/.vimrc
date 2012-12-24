@@ -29,3 +29,7 @@ set noswapfile
 filetype plugin indent on
 
 set ttymouse=xterm2
+
+syntax on
+set t_Co=256
+colorscheme solarized
