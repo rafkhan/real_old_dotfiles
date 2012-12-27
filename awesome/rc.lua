@@ -7,10 +7,9 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
--- Load Debian menu entries
-require("debian.menu")
+vicious = require("vicious")
 
-vicious = require("vicious");
+-- awful.util.spawn_with_shell("xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -39,11 +38,12 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/rafy/.config/awesome/themes/fence/theme.lua")
+-- beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("/home/rafy/.config/awesome/themes/arch/theme.lua");
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
-editor = os.getenv("EDITOR") or "editor"
+terminal = "urxvtc"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -76,7 +76,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "web", "vim", "rxvt", "mpd", 5, 6, 7, 8 }, s, layouts[1])
+    tags[s] = awful.tag({"web", "vim", "rxvt", "irc", "mpd", 6, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -90,7 +90,6 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
                                     { "open terminal", terminal }
                                   }
                         })
@@ -100,6 +99,10 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- }}}
 
 -- {{{ Wibox
+
+
+
+
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
 
@@ -170,6 +173,8 @@ for s = 1, screen.count() do
                                               return awful.widget.tasklist.label.currenttags(c, s)
                                           end, mytasklist.buttons)
 
+
+
     separator = widget({type = "textbox" })
     separator.text = " :: "
 
@@ -190,8 +195,8 @@ for s = 1, screen.count() do
     icon_ram = widget({ type="imagebox" })
     icon_ram.image = image(beautiful.icon_ram)
   
-mpdwidget = widget({ type = "textbox" })
-vicious.register(mpdwidget, vicious.widgets.mpd,
+    mpdwidget = widget({ type = "textbox" })
+    vicious.register(mpdwidget, vicious.widgets.mpd,
     function (widget, args)
         if args["{state}"] == "Stop" then 
             return " - "
@@ -211,12 +216,13 @@ vicious.register(mpdwidget, vicious.widgets.mpd,
     icon_bat= widget({ type="imagebox"  })
     icon_bat.image = image(beautiful.icon_bat)
 
+
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
-            --mylauncher,
+            mylauncher,
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
@@ -239,7 +245,6 @@ vicious.register(mpdwidget, vicious.widgets.mpd,
         separator,
         mpdwidget,
         icon_mpd,
-
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -393,7 +398,7 @@ awful.rules.rules = {
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons,
-                     size_hints_honor=false } },
+                     size_hints_honor=false} },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
     { rule = { class = "pinentry" },

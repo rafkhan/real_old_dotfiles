@@ -26,10 +26,19 @@ set incsearch     " show search matches as you type
 set nobackup
 set noswapfile
 
+set hidden
+
 filetype plugin indent on
 
 set ttymouse=xterm2
 
 syntax on
 set t_Co=256
-colorscheme solarized
+
+let mapleader = ","
+nmap <Leader>n :noh<CR>
+
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>s :set nolist!<CR>
+
+let g:Powerline_symbols = 'unicode'
