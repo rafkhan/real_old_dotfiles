@@ -38,6 +38,11 @@ set t_Co=256
 let mapleader = ","
 nmap <Leader>n :noh<CR>
 
+nmap <Leader>w :w<CR>
+nmap <Leader>wq :x<CR>
+nmap <Leader>x :x<CR>
+
+
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
