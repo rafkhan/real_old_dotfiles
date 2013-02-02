@@ -26,8 +26,6 @@ set incsearch     " show search matches as you type
 set nobackup
 set noswapfile
 
-set hidden
-
 filetype plugin indent on
 
 set ttymouse=xterm2
@@ -35,15 +33,7 @@ set ttymouse=xterm2
 syntax on
 set t_Co=256
 
-let mapleader = ","
-nmap <Leader>n :noh<CR>
-
-nmap <Leader>w :w<CR>
-nmap <Leader>wq :x<CR>
-nmap <Leader>x :x<CR>
-
-
-set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>s :set nolist!<CR>
-
+set laststatus=2
 let g:Powerline_symbols = 'unicode'
+set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+

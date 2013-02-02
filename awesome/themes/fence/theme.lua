@@ -43,7 +43,7 @@ if awful.util.file_readable(config .. "/vain/init.lua") then
 end
 --}}}
 
-theme.font          = "Montecarlo 7"
+theme.font          = "Montecarlo 4"
 
 theme.bg_normal     = "#05050595"
 theme.bg_focus      = "#191919"
