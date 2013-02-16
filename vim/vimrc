@@ -31,9 +31,17 @@ filetype plugin indent on
 set ttymouse=xterm2
 
 syntax on
+colorscheme jellybeans
 set t_Co=256
 
-set laststatus=2
-let g:Powerline_symbols = 'unicode'
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+set guioptions -=m
+set guioptions -=T
+set guioptions -=r
 
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 9
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
