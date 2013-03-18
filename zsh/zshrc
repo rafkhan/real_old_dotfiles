@@ -46,4 +46,11 @@ function cd() {
 }
 
 alias wifi="sudo wifi-menu wlp3s0"
-alias lamp="sudo systemctl start httpd && sudo systemctl start mysqld"
+alias lamp=" 
+  echo \"Starting httpd...\" \
+	&& sudo systemctl start httpd \
+	&& echo \"Starting mysqld...\"\
+	&& sudo systemctl start mysqld"
+
+alias venv="source ~/.virtualenvs/my_env/bin/activate"
+
