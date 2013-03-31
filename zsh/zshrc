@@ -53,4 +53,4 @@ alias lamp="
 	&& sudo systemctl start mysqld"
 
 alias venv="source ~/.virtualenvs/my_env/bin/activate"
-
+alias mwin="sudo mount /dev/sda2 /mnt/windows"
