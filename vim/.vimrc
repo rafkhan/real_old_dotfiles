@@ -45,3 +45,20 @@ if has("gui_running")
 endif
 
 set laststatus=2
+
+"
+" Muh bindings!
+"
+let mapleader = ","
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+nmap <Leader>w :w<CR>
+nmap <Leader>n :noh<CR>
+
+inoremap {<CR> {<CR>}<C-o>O
+
+nmap <Leader>nt :NERDTree<CR>
