@@ -32,7 +32,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode archlinux)
+plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,18 +41,13 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bi
 export PATH=$PATH:/opt/android-sdk/platform-tools
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+
+export GOROOT=/home/rafy/code/go/hg-golang
+export PATH=$PATH:$GOROOT/bin
+
+
 # MUH ALIASES
 
 function cd() {
 	builtin cd "$*" && ls
 }
-
-alias wifi="sudo wifi-menu wlp3s0"
-alias lamp=" 
-  echo \"Starting httpd...\" \
-	&& sudo systemctl start httpd \
-	&& echo \"Starting mysqld...\"\
-	&& sudo systemctl start mysqld"
-
-alias venv="source ~/.virtualenvs/my_env/bin/activate"
-alias mwin="sudo mount /dev/sda2 /mnt/windows"
