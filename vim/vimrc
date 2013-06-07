@@ -5,10 +5,18 @@ call pathogen#infect()
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
+"
+" from GOLANG vimrc stuff
+"
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
+
 set number
 
 set tabstop=2  
-filetype plugin indent on
 set autoindent
 set copyindent
 set shiftwidth=2
@@ -28,23 +36,9 @@ set backspace=indent,eol,start
 
 set ttymouse=xterm2
 
-syntax on
 colorscheme jellybeans
 set t_Co=256
 
-set guioptions -=m
-set guioptions -=T
-set guioptions -=r
-
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ 9
-  elseif has("gui_win32")
-    set guifont=Consolas:h11:cANSI
-  endif
-endif
-
-set laststatus=2
 
 "
 " Muh bindings!
