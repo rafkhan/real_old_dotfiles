@@ -23,6 +23,11 @@ set shiftwidth=2
 set shiftround
 set smarttab
 
+"
+" TOGGLE FOR SPACES
+"
+"set expandtab
+
 set showmatch
 set ignorecase
 set smartcase
@@ -56,3 +61,5 @@ nmap <Leader>n :noh<CR>
 inoremap {<CR> {<CR>}<C-o>O
 
 nmap <Leader>nt :NERDTree<CR>
+
+au Filetype html,xml,xsl source ~/.vim/plugin/closetag.vim
