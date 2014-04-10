@@ -7,48 +7,40 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/core_perl
-export PATH=$PATH:/opt/android-sdk/platform-tools
+#golang stuff
+export PATH=$PATH:$HOME/Code/go/lang/bin
+export GOPATH=$HOME/Code/go
+export PATH=$PATH:$GOPATH/bin
+
+export PATH="$PATH:/usr/local/mysql/bin"
+
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:/Applications/Postgres93.app/Contents/MacOS/bin/ #postgresql
 
-
-export GOROOT=/home/rafy/code/go/hg-golang
-export PATH=$PATH:$GOROOT/bin
-export GOPATH=/home/rafy/code/go
-
+export PATH=$PATH:/Users/rafy/Code/java/adt-bundle/sdk/platform-tools
+export PATH=$PATH:/Users/rafy/Code/java/adt-bundle/sdk/tools
 
 # MUH ALIASES
 
 function cd() {
 	builtin cd "$*" && ls
 }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# use homebrew ctags
+alias ctags="`brew --prefix`/bin/ctags"
+
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+
+nvm use 0.10.26 > /dev/null
+set -o vi
+
