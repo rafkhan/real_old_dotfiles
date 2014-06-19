@@ -54,3 +54,6 @@ alias gitclean='git branch --merged master | grep -v "\* master" | xargs -n 1 gi
 
 alias server="python -m SimpleHTTPServer"
 alias rg="cd ~/Documents/rangle"
+
+alias chrome-nosec="open -a /Applications/Google\ Chrome.app --args --disable-web-security"
+
