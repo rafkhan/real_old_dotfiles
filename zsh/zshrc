@@ -22,7 +22,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:/usr/local/mysql/bin"
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH=$PATH:/Applications/Postgres93.app/Contents/MacOS/bin/ #postgresql
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin/ #postgresql
 
 export PATH=$PATH:/Users/rafy/Code/java/adt-bundle/sdk/platform-tools
 export PATH=$PATH:/Users/rafy/Code/java/adt-bundle/sdk/tools
@@ -46,7 +46,9 @@ alias ctags="`brew --prefix`/bin/ctags"
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 
 nvm use 0.10.26 > /dev/null
+
 set -o vi
+bindkey "^R" history-incremental-search-backward
 
 alias gitl="git log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
@@ -56,4 +58,5 @@ alias server="python -m SimpleHTTPServer"
 alias rg="cd ~/Documents/rangle"
 
 alias chrome-nosec="open -a /Applications/Google\ Chrome.app --args --disable-web-security"
+
 
